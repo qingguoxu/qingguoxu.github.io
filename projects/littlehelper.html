@@ -1,0 +1,86 @@
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Language" content="en-us">
+
+<title>LittleHelper: a Google glass app</title>
+<style type="text/css"></style></head>
+
+<body>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table align="center" border="1" width="60%" style="border-width: 0px" height="472">
+	<!-- MSTableType="nolayout" -->
+	<tbody><tr>
+		<td style="border-style: none; border-width: medium" align="center" height="38">
+		<font face="Arial" size="6" color="#376092">Littlehelper: Using Google Glass to Assist Individuals with Autism in Job Interviews</font></td>
+	</tr>
+	
+	
+	<tr>
+		<td style="border-style: none; border-width: medium" align="center" height="21">&nbsp;<p align="left">
+		<font size="5" color="#376092"><b>Project Description</b></font></p></td>
+	</tr>
+	<tr>
+		<td style="border-style: none; border-width: medium" align="center" height="182">
+		<p align="left">&nbsp;</p><p align="left" style="line-height: 150%; margin-top: 0; margin-bottom: 0">
+		<font face="Century">
+		
+		This is a <a style="color: blue; text-underline: single" href="http://fox13now.com/2015/05/15/high-tech-tools-for-those-with-autism-the-focus-friday-at-international-conference/" target="_blank">
+			<span style="color: #376092; text-decoration:none">news report</span></a> about the annual International Meeting of Autism Research (IMFAR) in Salt Lake City, 2015. Our projects get some
+			attention. 
+		<br /> <br />
+		With the rapid increase in the prevalence of autism spectrum
+disorder (ASD) in 1990s, there are approximately 50,000
+individuals with ASD turning 18 years old every year. The
+community-based employment rate, even for those individuals
+with higher functioning capabilities, is very low. This
+can be partly explained by socio-communicative skill deficits
+which are a hallmark of ASD, such as poor eye-contact
+and inappropriately modulated speech. There has been little
+work in developing assistive technology to help individuals
+with ASD to compensate for these deficits. LittleHelper is a new system based on a wearable augmentedreality
+glass platform to provide customized supports for individuals with ASD in enhancing social
+communication during a job interview. Using the built-in
+camera and microphone, LittleHelper can detect the position
+of the interviewer relative to the center of the camera
+view, and measure the sound level of the user. Based on
+these inputs, appropriate visual feedbacks are provided back
+to the user through the optical head-mounted display.
+<br /><br />
+		Littlehelper takes advantage of the small display and mini camera of Google glass to help individuals 
+		with autism during the job interview. The camera can find where the interviewer is and the display can 
+		tell the interviewee with ASD where he/she should look at. I did the user study and also 
+		implemented the first version of Littlehelper, which is a Google glass app. 
+<br /><br />
+LittleHelper takes data both from the built-in camera and the microphone. We estimate 
+		an ambient noise floor level during the initial training phase when the user is not speaking. To reduce 
+		computing load in volume estimation, we set the sample rate to 8000 Hz and sample
+width to 16 bits, the smallest supported by the Android operating system. Using a window size of 1 second, we calculate
+		the root mean square (RMS) of the audio signal.		
+<br /> <br />
+To detect the location of the interviewer’s face, we rely on
+the Viola-Jones face detector from the open-source
+OPENCV library adapted for Google Glass platform. The detected face size (in pixel) is also used as an estimation of the
+distance between the interviewer and the interviewee. Because different distance means different appropriate speaking 
+volume (calculated as a RMS value).
+		</font></p></td>
+	</tr>
+	<tr style="height: 30.65pt">
+
+</tr>
+
+
+	
+	
+</tbody></table>
+
+<p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
+<hr style="height:1px;border:none;border-top:1px solid #555555;">
+<center>
+<div id="jnkc">6/18/2017, 6:30:12 PM</div>
+<div align="center">
+<script align="center">setInterval("jnkc.innerHTML=new Date().toLocaleString();",1000);
+
+</script></div></center>
+
+</body></html>

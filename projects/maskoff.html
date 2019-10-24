@@ -1,0 +1,171 @@
+
+<!-- saved from url=(0106)http://cs.uky.edu/~yzh272/Synthesizing%20Realistic%20Facial%20Images%20for%20Head-mounted%20Displays2.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Language" content="en-us">
+
+<title>Mask-off: Synthesizing Face Images in the Presence of Head-mounted Displays</title>
+<style type="text/css"></style></head>
+
+<body>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table align="center" border="1" width="60%" style="border-width: 0px" height="472">
+	<!-- MSTableType="nolayout" -->
+	<tbody><tr>
+		<td style="border-style: none; border-width: medium" align="center" height="38">
+		<font face="Arial" size="6" color="#376092">Synthesizing Realistic Facial Images for Head-mounted Displays(mobile setup)</font></td>
+	</tr>
+	
+	<tr>
+		<td style="border-style: none; border-width: medium" align="center" height="21">
+		<img border="0" src="./maskoff_files/teaser4.png" width="1244" height="280"></td>
+	</tr>
+	<tr>
+		<td style="border-style: none; border-width: medium" align="center" height="21">&nbsp;<p align="left">
+		<font size="5" color="#376092"><b>System Setup</b></font></p></td>
+	</tr>
+	<tr>
+		<td style="border-style: none; border-width: medium" align="center" height="182">
+		<p align="left">&nbsp;</p><p align="left" style="line-height: 150%; margin-top: 0; margin-bottom: 0">
+		<font face="Century">In our mobile setup, we used a VR-headset case, one of these types that allow a user to insert a mobile phone to create a low-cost head-mounted display (HMD). 
+		We insert two small VGA cameras inside the shell to observe the eye region. 
+	In this mobile setup, a user should wear our modified headset as usual, a fixed desktop camera is used to observed the user. 
+	This is similar to a regular video conference setup except that the user's face is severely occluded.</font></p></td>
+	</tr>
+	<tr style="height: 30.65pt">
+
+</tr>
+
+
+
+
+
+
+
+	<tr>
+
+		<td style="border-style: none; border-width: medium" align="center" height="59">
+			<h2><a name="TOC-Person-Swap-in-Videos"></a>Demonstration of the System Setup</h2>
+		<img border="0" src="./maskoff_files/HMD_real_setup.png" width="550" height="480" align="center"></td>
+	</tr>
+	
+	
+	
+	
+	<tr>
+	<td style="border-style: none; border-width: medium">
+	<p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
+<hr style="height:1px;border:none;border-top:1px solid #555555;"></td>
+	</tr>
+	<tr>
+		<td style="border-style: none; border-width: medium" align="center" height="21">&nbsp;<p align="left">
+		<font size="5" color="#376092"><b>System Calibration</b></font></p></td>
+	</tr>
+	
+	<tr>
+		<td style="border-style: none; border-width: medium" align="center" height="182">
+		<p align="left">&nbsp;</p><p align="left" style="line-height: 150%; margin-top: 0; margin-bottom: 0">
+		<font face="Century"> We first have to geometrically calibrate all cameras. 
+		While the fixed setup is easy to deal with, the mobile one is more difficult since the HMD can move all the time.
+		We describe our procedure for the mobile system calibration and tracking. 
+		We first intrinsically calibrate all the cameras using standard techniques. 
+		We then print out a small checkerboard pattern and attached it to the VR-display case so that one half of the patterns are visible to the face camera and the other half is visible to the NIR eye camera. 
+		Since the size of the grid is known, we can estimate the pose of these cameras using a Perspective-n-point algorithm (PnP).
+		 Using PnP, the face camera's pose in the HMD space can be estimated. 
+		Using the face camera as a bridge, we can now calculate the eye-camera's pose in the space of HMD. 
+		Now we can remove the checkerboard pattern (since it will occlude the eye cameras). 
+		At run time, the face camera will track the HMD's pose using these color dots and therefore the pose of the eye cameras. 
+		</font></p></td>
+	</tr>
+	<tr>
+		<td style="border-style: none; border-width: medium" align="center" height="59">
+		<img border="0" src="./maskoff_files/HMD_calib.png" width="550" height="459" align="center"></td>
+	</tr>
+	
+	
+	
+	<tr>
+	<td style="border-style: none; border-width: medium">
+	<p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
+<hr style="height:1px;border:none;border-top:1px solid #555555;"></td>
+	</tr>
+	<tr>
+		<td style="border-style: none; border-width: medium" align="center" height="21">&nbsp;<p align="left">
+		<font size="5" color="#376092"><b>Pipeline</b></font></p></td>
+	</tr>
+	
+	<tr>
+		<td style="border-style: none; border-width: medium" align="center" height="182">
+		<p align="left">&nbsp;</p><p align="left" style="line-height: 150%; margin-top: 0; margin-bottom: 0">
+		<font face="Century"> Our system consists of four modules.
+We reconstruct a personalized 3D head model from a video
+sequence captured off-line in the first module.
+The 2D facial landmarks and 3D sparse point cloud are
+integrated together in our optimization algorithm to obtain
+an accurate head model. In the second module,
+we propose a novel algorithm to align 3D head model to the
+face image that has been severely occluded by the HMD.
+Instead of fitting the head model to the small lower face
+portion for each image frame, our algorithm first estimates
+the transformation between the HMD and the head model
+once a user put on the HMD. The transformation is combined
+with the estimated HMD pose for each image frame to
+align the head model robustly. The facial expression weights
+are then computed to obtain a personalized head model
+with expression changes. In order to generate realistic face
+images without occlusions, in the third module,
+we apply a boundary constrained warping algorithm based
+on the reference image retrieved from the pre-captured data
+set. In the fourth module, we propose another
+novel algorithm to process the warped near-infrared eye
+images. The eye images are first colorized based on the color
+information from the image template. The obvious artifacts
+(e.g., “red eye”) in the eye regions also are removed in this
+module.
+		</font></p></td>
+	</tr>
+	<tr>
+		<td style="border-style: none; border-width: medium" align="center" height="59">
+		<img border="0" src="./maskoff_files/pipelineNew2.png" width="1093" height="550" align="center"></td>
+	</tr>
+	
+	<tr>
+		<td style="border-style: none; border-width: medium" align="center" height="66">
+		<p align="left">&nbsp;</p><p align="left"><b><font color="#376092" size="5">Tracking and Synthesis Results</font></b></p></td>
+	</tr>
+	<tr>
+		<td style="border-style: none; border-width: medium" align="center" height="80">
+		<p align="left">&nbsp;</p><p align="left" style="line-height: 150%; margin-top: 0; margin-bottom: 0">
+		<font face="Century">In the following video, we show the synthesized video by proposed method.
+</font></p></td>
+	</tr>
+	
+	
+	<tr><td style="border-style: none; border-width: medium" align="center" height="21">
+		<h2><a name="TOC-Person-Swap-in-Videos"></a>Tracking and Synthesis Results
+</h2>
+		<div><div><div class="sites-embed-align-left-wrapping-off"><div class="sites-embed-border-off sites-embed" style="width:640px;"><div class="sites-embed-content sites-embed-type-youtube">
+		<iframe width="560" height="315" src="./maskoff_files/hwKG_OiuomM.html" frameborder="0" allowfullscreen=""></iframe></div></div></div></div><br></div><div><br></div><div><br></div>
+		</td>
+	</tr>
+	
+	
+	<tr>
+	<td style="border-style: none; border-width: medium">
+	<p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
+<hr style="height:1px;border:none;border-top:1px solid #555555;"></td>
+	</tr>
+	
+	
+</tbody></table>
+
+<p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
+<hr style="height:1px;border:none;border-top:1px solid #555555;">
+<center>
+<div id="jnkc">6/18/2017, 6:36:14 PM</div>
+<div align="center">
+<script align="center">setInterval("jnkc.innerHTML=new Date().toLocaleString();",1000);
+
+</script></div></center>
+
+</body></html>
